@@ -1,102 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tourism Visualizations</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0/build/vega-lite.css">
-    <script src="https://cdn.jsdelivr.net/npm/vega@5.23.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.19.1"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #6F4C3E; /* Brown background */
-            margin: 0;
-            padding: 20px;
-        }
-        .container {
-            background-color: white; /* White container */
-            border-radius: 15px; /* Rounded corners */
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            max-width: 800px; /* Maximum width for the container */
-            margin: 0 auto; /* Center the container */
-        }
-        h1 {
-            text-align: center;
-            color: #333; /* Darker text for the heading */
-        }
-        .visualization-container {
-            margin: 20px 0; /* Space between visualization containers */
-            display: flex;
-            flex-direction: column; /* Stack visualization and text vertically */
-            align-items: center; /* Center the items */
-            width: fit-content; /* Size of the container adjusts to content */
-            margin-left: auto; /* Centering container in the available space */
-            margin-right: auto; /* Centering container in the available space */
-        }
-        .visualization {
-            width: 100%; /* Full width of the visualization container */
-            display: flex;
-            justify-content: center; /* Center the visualization */
-            align-items: center; /* Center the visualization vertically */
-            overflow: hidden; /* Hide overflow */
-            padding: 10px; /* Padding around the visualization */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for the visualization */
-            border-radius: 10px; /* Rounded corners for the visualization */
-        }
-        .description {
-            text-align: center; /* Center the description text */
-            color: #666; /* Lighter color for the description */
-            margin-top: 5px; /* Space above the description text */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Overtourism Visualizations</title>
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Tourism Visualizations</h1>
-
-        <div class="visualization-container">
-            <div id="overtourism_geo" class="visualization"></div>
-            <div class="description">Overtourism Geographic Visualization</div>
-        </div>
-        <div class="visualization-container">
-            <div id="undertourism_geo" class="visualization"></div>
-            <div class="description">Undertourism Geographic Visualization</div>
-        </div>
-        <div class="visualization-container">
-            <div id="overtourism_bar" class="visualization"></div>
-            <div class="description">Overtourism Bar Chart Visualization</div>
-        </div>
-        <div class="visualization-container">
-            <div id="undertourism_line" class="visualization"></div>
-            <div class="description">Undertourism Line Chart Visualization</div>
-        </div>
-        <div class="visualization-container">
-            <div id="wtdi_bubble" class="visualization"></div>
-            <div class="description">WTDI Bubble Chart Visualization</div>
-        </div>
-        <div class="visualization-container">
-            <div id="wtdi_treemap" class="visualization"></div>
-            <div class="description">WTDI Treemap Visualization</div>
-        </div>
-    </div>
-
-    <script>
-        // Function to embed Vega-Lite visualization
-        function embedVegaLite(containerId, jsonUrl) {
-            vegaEmbed(containerId, jsonUrl)
-                .catch(console.error);
-        }
-
-        // Embedding the visualizations
-        embedVegaLite('#overtourism_geo', 'visualization.vl_overtourism_geo.json');
-        embedVegaLite('#undertourism_geo', 'visualization.vl_undertourism_geo.json');
-        embedVegaLite('#overtourism_bar', 'visualization.vl_overtourism_bar.json');
-        embedVegaLite('#undertourism_line', 'visualization.vl_undertourism_line.json');
-        embedVegaLite('#wtdi_bubble', 'Wtdi_bubble.json');
-        embedVegaLite('#wtdi_treemap', 'Wtdi_treemap.json');
-    </script>
+  <h1>Overtourism Visualizations</h1>
+  <!-- Container for the first visualization -->
+  <div id="vis1"></div>
+  <script type="text/javascript">
+    var spec1 = "visualization.vl.json";
+    vegaEmbed('#vis1', spec1).then(function(result) {
+      // Access the Vega view instance as result.view
+    }).catch(console.error);
+  </script>
+  <!-- Container for the second visualization -->
+  <div id="vis2"></div>
+  <script type="text/javascript">
+    var spec2 = "visualization.vl%20(1).json"; // Use URL-encoding for spaces in file name
+    vegaEmbed('#vis2', spec2).then(function(result) {
+      // Access the Vega view instance as result.view
+    }).catch(console.error);
+  </script>
 </body>
 </html>

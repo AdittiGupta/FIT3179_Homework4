@@ -1,33 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Overtourism Visualizations</title>
-  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
-  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Visualizations</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0/build/vega-lite.css">
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.23.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.19.1"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #6F4C3E; /* Brown background */
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            margin: 20px auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .visualization-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 40px 0;
+        }
+        .visualization {
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .description {
+            text-align: center;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        /* Custom sizes for each graph */
+        .overtourism-geo {
+            width: 100%;
+            max-width: 1000px; /* Larger map visualization */
+            height: 600px;
+        }
+        .undertourism-geo {
+            width: 100%;
+            max-width: 1000px;
+            height: 500px;
+        }
+        .overtourism-bar {
+            width: 80%; /* Slightly smaller for bar chart */
+            max-width: 800px;
+            height: 400px;
+        }
+        .undertourism-line {
+            width: 80%;
+            max-width: 800px;
+            height: 400px;
+        }
+        .wtdi-bubble {
+            width: 90%; /* Medium size for bubble chart */
+            max-width: 850px;
+            height: 450px;
+        }
+        .wtdi-treemap {
+            width: 90%; /* Treemap visualization */
+            max-width: 850px;
+            height: 450px;
+        }
+    </style>
 </head>
 <body>
-  <h1>Overtourism Visualizations</h1>
+    <div class="container">
+        <h1>Tourism in the World</h1>
 
-  <!-- Container for the first visualization -->
-  <div id="vis1"></div>
-  <script type="text/javascript">
-    var spec1 = "visualization.vl.json";
-    vegaEmbed('#vis1', spec1).then(function(result) {
-      // Access the Vega view instance as result.view
-    }).catch(console.error);
-  </script>
+        <div class="visualization-container">
+            <div id="overtourism_geo" class="visualization overtourism-geo"></div>
+            <div class="description">Overtourism Geographic Visualization</div>
+        </div>
+        <div class="visualization-container">
+            <div id="undertourism_geo" class="visualization undertourism-geo"></div>
+            <div class="description">Undertourism Geographic Visualization</div>
+        </div>
+        <div class="visualization-container">
+            <div id="overtourism_bar" class="visualization overtourism-bar"></div>
+            <div class="description">Overtourism Bar Chart Visualization</div>
+        </div>
+        <div class="visualization-container">
+            <div id="undertourism_line" class="visualization undertourism-line"></div>
+            <div class="description">Undertourism Line Chart Visualization</div>
+        </div>
+        <div class="visualization-container">
+            <div id="wtdi_bubble" class="visualization wtdi-bubble"></div>
+            <div class="description">WTDI Bubble Chart Visualization</div>
+        </div>
+        <div class="visualization-container">
+            <div id="wtdi_treemap" class="visualization wtdi-treemap"></div>
+            <div class="description">WTDI Treemap Visualization</div>
+        </div>
+    </div>
 
-  <!-- Container for the second visualization -->
-  <div id="vis2"></div>
-  <script type="text/javascript">
-    var spec2 = "visualization.vl%20(1).json"; // Use URL-encoding for spaces in file name
-    vegaEmbed('#vis2', spec2).then(function(result) {
-      // Access the Vega view instance as result.view
-    }).catch(console.error);
-  </script>
+    <script>
+        // Function to embed Vega-Lite visualization
+        function embedVegaLite(containerId, jsonUrl) {
+            vegaEmbed(containerId, jsonUrl)
+                .catch(console.error);
+        }
 
+        // Embedding the visualizations
+        embedVegaLite('#overtourism_geo', 'visualization.vl_overtourism_geo.json');
+        embedVegaLite('#undertourism_geo', 'visualization.vl_undertourism_geo.json');
+        embedVegaLite('#overtourism_bar', 'visualization.vl_overtourism_bar.json');
+        embedVegaLite('#undertourism_line', 'visualization.vl_undertourism_line.json');
+        embedVegaLite('#wtdi_bubble', 'Wtdi_bubble.json');
+        embedVegaLite('#wtdi_treemap', 'Wtdi_treemap.json');
+    </script>
 </body>
 </html>

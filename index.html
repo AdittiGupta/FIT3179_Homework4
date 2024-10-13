@@ -16,94 +16,69 @@
             padding: 20px;
         }
         .container {
-            background-color: white;
-            border-radius: 15px;
+            background-color: white; /* White container */
+            border-radius: 15px; /* Rounded corners */
             padding: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            margin: 20px auto;
+            max-width: 800px; /* Maximum width for the container */
+            margin: 0 auto; /* Center the container */
         }
         h1 {
             text-align: center;
-            color: #333;
+            color: #333; /* Darker text for the heading */
         }
         .visualization-container {
+            margin: 20px 0; /* Space between visualization containers */
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 40px 0;
+            flex-direction: column; /* Stack visualization and text vertically */
+            align-items: center; /* Center the items */
+            width: fit-content; /* Size of the container adjusts to content */
+            margin-left: auto; /* Centering container in the available space */
+            margin-right: auto; /* Centering container in the available space */
         }
         .visualization {
-            overflow: hidden;
+            width: 100%; /* Full width of the visualization container */
             display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 15px;
+            justify-content: center; /* Center the visualization */
+            align-items: center; /* Center the visualization vertically */
+            overflow: hidden; /* Hide overflow */
+            padding: 10px; /* Padding around the visualization */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Shadow for the visualization */
+            border-radius: 10px; /* Rounded corners for the visualization */
         }
         .description {
-            text-align: center;
-            color: #666;
-            margin-top: 10px;
-        }
-
-        /* Custom sizes for each graph */
-        .overtourism-geo {
-            width: 100%;
-            max-width: 1000px; /* Larger map visualization */
-            height: 600px;
-        }
-        .undertourism-geo {
-            width: 100%;
-            max-width: 1000px;
-            height: 500px;
-        }
-        .overtourism-bar {
-            width: 80%; /* Slightly smaller for bar chart */
-            max-width: 800px;
-            height: 400px;
-        }
-        .undertourism-line {
-            width: 80%;
-            max-width: 800px;
-            height: 400px;
-        }
-        .wtdi-bubble {
-            width: 90%; /* Medium size for bubble chart */
-            max-width: 850px;
-            height: 450px;
-        }
-        .wtdi-treemap {
-            width: 90%; /* Treemap visualization */
-            max-width: 850px;
-            height: 450px;
+            text-align: center; /* Center the description text */
+            color: #666; /* Lighter color for the description */
+            margin-top: 5px; /* Space above the description text */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Tourism in the World</h1>
+        <h1>Tourism Visualizations</h1>
 
         <div class="visualization-container">
-            <div id="overtourism_geo" class="visualization overtourism-geo"></div>
+            <div id="overtourism_geo" class="visualization"></div>
             <div class="description">Overtourism Geographic Visualization</div>
         </div>
         <div class="visualization-container">
-            <div id="undertourism_geo" class="visualization undertourism-geo"></div>
+            <div id="undertourism_geo" class="visualization"></div>
             <div class="description">Undertourism Geographic Visualization</div>
         </div>
         <div class="visualization-container">
-            <div id="overtourism_bar" class="visualization overtourism-bar"></div>
+            <div id="overtourism_bar" class="visualization"></div>
             <div class="description">Overtourism Bar Chart Visualization</div>
         </div>
         <div class="visualization-container">
-            <div id="undertourism_line" class="visualization undertourism-line"></div>
+            <div id="undertourism_line" class="visualization"></div>
             <div class="description">Undertourism Line Chart Visualization</div>
         </div>
         <div class="visualization-container">
-            <div id="wtdi_bubble" class="visualization wtdi-bubble"></div>
+            <div id="wtdi_bubble" class="visualization"></div>
             <div class="description">WTDI Bubble Chart Visualization</div>
         </div>
         <div class="visualization-container">
-            <div id="wtdi_treemap" class="visualization wtdi-treemap"></div>
+            <div id="wtdi_treemap" class="visualization"></div>
             <div class="description">WTDI Treemap Visualization</div>
         </div>
     </div>
